@@ -45,5 +45,12 @@ class BasicAuth(Auth):
             return None, None
         if not isinstance(decoded_base64_authorization_header, str):
             return None, None
-        user_credentials = decoded_base64_authorization_header.split(':', 1)
-        return user_credentials[0], user_credentials[1]
+        if ':' not in decoded_base64_authorization_header:
+            return None, None
+
+        # split only at the first occurence of ':'
+        try:
+            email, password = decoded_base64_authorization_header.split(':', 1)
+            return email, password
+        except ValueError:
+            return None, None
