@@ -77,14 +77,3 @@ class DB:
                 raise ValueError("User has no attribute {}".format(key))
             setattr(user, key, value)
         self._session.commit()
-
-    def _has_password(self, password: str) -> bytes:
-        """Hash a password
-        Args:
-            password (str): The password to hash.
-        Returns:
-            str: The hashed password.
-        """
-        salt = bcrypt.gensalt()
-        hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt)
-        return hashed_password
