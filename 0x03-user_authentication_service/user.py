@@ -16,6 +16,6 @@ class User(Base.Model):
     __tablename__: str = 'users'
     id = Base.Column(Base.Integer, primary_key=True)
     email = Base.Column(Base.String(250), nullable=False)
-    hashed_password = Base.Column(Base.String(250), nullable=False, unique=True)
+    hashed_password = Base.Column(Base.String(250), nullable=False)
     session_id = Base.Column(Base.String(250), nullable=True)
     reset_token = Base.Column(Base.String(250), nullable=True)
