@@ -17,9 +17,3 @@ class User(db.Model):
     hashed_password = db.Column(db.String(250), nullable=False)
     session_id = db.Column(db.String(250), nullable=True)
     reset_token = db.Column(db.String(250), nullable=True)
-
-    def __str__(self):
-        """
-        Return string representation of the User object
-        """
-        return "User<{}>".format(self.email)
