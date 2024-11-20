@@ -1,4 +1,4 @@
-#!/usr/binenv python3
+#!/usr/bin/env python3
 """
 User class
 """
@@ -14,6 +14,6 @@ class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(250), nullable=False)
-    hashed_password = db.Column(db.String(250), nullable=False)
+    hashed_password = db.Column(db.String(250), nullable=False, unique=True)
     session_id = db.Column(db.String(250), nullable=True)
     reset_token = db.Column(db.String(250), nullable=True)
