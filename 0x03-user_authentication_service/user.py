@@ -3,22 +3,19 @@
 User class
 """
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.declarative import declarative_base
 from typing import Optional
 
-db = SQLAlchemy()
+Base = declarative_base()
 
 
-class User(db.Model):
+class User(Base.Model):
     """
     User class
     """
     __tablename__: str = 'users'
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(250), nullable=False)
-    hashed_password = db.Column(db.String(250), nullable=False, unique=True)
-    session_id = db.Column(db.String(250), nullable=True)
-    reset_token = db.Column(db.String(250), nullable=True)
-
-    def __repr__(self):
-        """A string representation of the object"""
-        return f'<User {self.email}>'
+    id = Base.Column(Base.Integer, primary_key=True)
+    email = Base.Column(Base.String(250), nullable=False)
+    hashed_password = Base.Column(Base.String(250), nullable=False, unique=True)
+    session_id = Base.Column(Base.String(250), nullable=True)
+    reset_token = Base.Column(Base.String(250), nullable=True)
