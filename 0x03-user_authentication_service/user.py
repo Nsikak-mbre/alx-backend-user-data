@@ -3,6 +3,7 @@
 User class
 """
 from flask_sqlalchemy import SQLAlchemy
+from typing import Optional
 
 db = SQLAlchemy()
 
@@ -11,7 +12,7 @@ class User(db.Model):
     """
     User class
     """
-    __tablename__ = 'users'
+    __tablename__: str = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(250), nullable=False)
     hashed_password = db.Column(db.String(250), nullable=False, unique=True)
