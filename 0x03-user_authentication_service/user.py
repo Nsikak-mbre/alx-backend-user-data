@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-User class
+Declare a SQLAlchemy model named 'User' corresponding to a
+database table named "users
 """
 
 from sqlalchemy.ext.declarative import declarative_base
