@@ -17,3 +17,7 @@ class User(db.Model):
     hashed_password = db.Column(db.String(250), nullable=False, unique=True)
     session_id = db.Column(db.String(250), nullable=True)
     reset_token = db.Column(db.String(250), nullable=True)
+
+    def __repr__(self):
+        """A string representation of the object"""
+        return f'<User {self.email}>'
