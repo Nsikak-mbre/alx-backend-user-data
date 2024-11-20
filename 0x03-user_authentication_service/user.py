@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
 """
 Declare a SQLAlchemy model named 'User' corresponding to a
-database table named "users
+database table named "users"
 """
-
 from sqlalchemy.ext.declarative import declarative_base
-from typing import Optional
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import (
+    Column,
+    Integer,
+    String,
+)
 
 Base = declarative_base()
 
 
-class User(Base.Model):
+class User(Base):
     """
-    User class
+    Definition of class User
     """
-    __tablename__: str = 'users'
+    __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
     email = Column(String(250), nullable=False)
