@@ -160,7 +160,7 @@ def update_password() -> str:
 
     # validate form data
     if not email or not reset_token or not new_password:
-        abort(400)
+        abort(403)
 
     # update password
     try:
