@@ -165,11 +165,11 @@ def update_password() -> str:
     # update password
     try:
         AUTH.update_password(reset_token, new_password)
-        return jsonify({'email': email, 'message': 'Password updated'}), 200
+        abort(403)
     except ValueError:
         abort(403)
-    except Exception as e:
-        abort(500, description=str(e))
+    
+    return jsonify({'email': email, 'message': 'Password updated'})
 
 
 if __name__ == "__main__":
