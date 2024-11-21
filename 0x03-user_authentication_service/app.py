@@ -89,7 +89,7 @@ def logout():
     return redirect("/")
 
 
-@app.route("/sessions", methods=["GET"], strict_slashes=False)
+@app.route("/profile", methods=["GET"], strict_slashes=False)
 def profile():
     """
     Get the profile of the current user.
@@ -108,7 +108,7 @@ def profile():
         abort(403)
 
     # find the user by session_id
-    user = AUTH.get_user_from_session_id(session_id=session_id)
+    user = AUTH.get_user_from_session_id(session_id)
     if not user:
         abort(403)
 
