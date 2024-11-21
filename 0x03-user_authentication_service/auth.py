@@ -31,6 +31,7 @@ class Auth:
     """
     Auth class to interact with the database
     """
+
     def __init__(self):
         """
         Initialize a new Auth instance
@@ -123,3 +124,24 @@ class Auth:
         """
         self._db.update_user(user_id, session_id=None)
         return None
+
+    def get_reset_password_token(self, email: str) -> str:
+        """
+        Get a reset password token for a user
+
+        Args:
+            email (str): The user's email address.
+
+        Returns:
+            str: The reset password token.
+
+        Raises:
+            ValueError: If the user does not exist.
+        """
+        try:
+            user = self._db.find_user_by(email=email)
+        except NoResultFound:
+            raise ValueError
+        token = str(uuid.uuid4())
+        self._db.update_user(user.id, reset_token=token)
+        return token
