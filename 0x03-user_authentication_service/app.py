@@ -160,11 +160,11 @@ def update_password() -> str:
 
     # validate form data
     if not email or not reset_token or not new_password:
-        abort(403)
+        abort(400)
 
     # update password
     try:
-        AUTH.update_password(email, reset_token, new_password)
+        AUTH.update_password(reset_token, new_password)
     except ValueError:
         abort(403)
     return jsonify({'email': email, 'message': 'password updated'}), 200
