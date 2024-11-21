@@ -80,7 +80,7 @@ def logout():
         abort(403)
 
     # find the user by session_id
-    user = AUTH.find_user_by(session_id=session_id)
+    user = AUTH.get_user_from_session_id(session_id=session_id)
     if not user:
         abort(403)
 
