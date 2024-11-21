@@ -164,6 +164,7 @@ def update_password() -> str:
 
     # update password
     try:
+        user = AUTH._db.find_user_by(email=email, reset_token=reset_token)
         AUTH.update_password(reset_token, new_password)
         return jsonify({'email': email, 'message': 'Password updated'}), 200
     except ValueError:
