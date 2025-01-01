@@ -5,7 +5,11 @@ Module for filtering log data to obfuscate specified fields.
 
 import re
 import logging
+import mysql.connector
+from mysql.connector.connection import MySQLConnection
 from typing import List
+import os
+
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
@@ -80,3 +84,17 @@ def get_logger() -> logging.Logger:
     logger.addHandler(stream_handler)
 
     return logger
+
+
+def get_db() -> MySQLConnection:
+    """
+    Connect to a MySQL database and return the connection object.
+
+    Returns:
+        MySQLConnection: The
+    """
+    return mysql.connector.connect(
+        host=os.getenv("PERSONAL_DATA_DB_HOST", "localhost"),
+        database=os.getenv("PERSONAL_DATA_DB_NAME"),
+        user=os.getenv("PERSONAL_DATA_DB_USERNAME", "root"),
+        password=os.getenv("PERSONAL_DATA_DB_PASSWORD", ""))
