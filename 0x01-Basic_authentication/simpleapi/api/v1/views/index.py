@@ -31,3 +31,10 @@ def test_unauthorized() -> str:
     """ Endpoint to test an unauthorized request
     """
     abort(401)
+
+
+@app_views.route('/forbidden/', methods=['GET'], strict_slashes=False)
+def test_forbidden() -> str:
+    """ Endpoint to test an unauthorized request
+    """
+    abort(403)
